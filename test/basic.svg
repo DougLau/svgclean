@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width='640' height='480'>
+<rect x='20' y='20' width='600' height='440' fill='blue'/>
+<line x1='20' y1='20' x2='620' y2='460' stroke='black'/>
+</svg>

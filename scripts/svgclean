@@ -1,0 +1,161 @@
+#!/bin/env python
+#
+#   svgclean
+#
+#   This is a program to reformat and clean SVG documents.
+#   Copyright (C) 2006-2013  Douglas P. Lau
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   included COPYING file for more details.
+#
+from __future__ import print_function
+import sys
+import copy
+import os
+import os.path
+from optparse import OptionParser
+from svgclean import VERSION, COPYRIGHT, cleaner
+
+def common_dir(paths):
+	paths = [os.path.realpath(p) for p in paths]
+	prefix = os.path.commonprefix(paths)
+	if os.path.isdir(prefix):
+		return os.path.abspath(prefix)
+	else:
+		return os.path.dirname(prefix)
+
+def join_output(output, fname):
+	if os.path.isabs(fname):
+		fname = os.path.realpath(fname)
+		dname = common_dir((output, fname))
+		bname = fname[len(dname):]
+		if os.path.isabs(bname):
+			bname = bname[1:]
+		return os.path.join(output, bname)
+	else:
+		return os.path.join(output, fname)
+
+def clean_file(options, fname):
+	opt = copy.copy(options)
+	if opt.output:
+		opt.out_file = join_output(opt.output, fname)
+		dname = os.path.dirname(opt.out_file)
+		if not os.path.isdir(dname):
+			os.makedirs(dname)
+	else:
+		opt.out_file = None
+	opt.in_file = fname
+	c = cleaner.SvgCleaner(opt)
+	c.clean_file()
+
+parser = OptionParser(version='%%prog %s\n%s' % (VERSION, COPYRIGHT))
+parser.add_option('-a', '--absolute', action='store_true',
+	dest='absolute', default=False,
+	help='use absolute coordinates in paths (default relative)')
+parser.add_option('-A', '--attrib', action='store_true',
+	dest='attrib', default=False,
+	help='remove superfluous attributes (unreferenced id)')
+parser.add_option('-b', '--bezier', action='store_true',
+	dest='bezier', default=False,
+	help='find and compress reflected control points in curves')
+parser.add_option('-B', '--basic', action='store_true',
+	dest='basic', default=False,
+	help='convert basic shapes (line, rect, etc.) to paths')
+parser.add_option('-c', '--comments', action='store_true',
+	dest='comments', default=False,
+	help='remove all comment blocks')
+parser.add_option('-C', '--colinear', action='store_true',
+	dest='colinear', default=False,
+	help='(TODO) remove redundant colinear points in path data')
+parser.add_option('-d', '--digits', type='int',
+	dest='digits',
+	help='significant digits after decimal point (coordinates)')
+parser.add_option('-D', '--dpi', type='int',
+	dest='dpi', default=72,
+	help='(TODO) set the dots-per-inch for unit conversion')
+parser.add_option('-e', '--elements', action='store_true',
+	dest='elements', default=False,
+	help='(TODO) remove all empty/unused elements')
+parser.add_option('-f', '--foreign', action='store_true',
+	dest='foreign', default=False,
+	help='remove all foreignObject elements')
+parser.add_option('-i', '--indent', type='int',
+	dest='indent', default=8,
+	help='columns for each block indent (default 8)')
+parser.add_option('-l', '--letter', action='store_true',
+	dest='letter', default=False,
+	help='remove path letter on subsequent commands')
+parser.add_option('-m', '--metadata', action='store_true',
+	dest='metadata', default=False,
+	help='(TODO) remove metadata elements')
+parser.add_option('-n', '--namespace', action='store_true',
+	dest='namespace', default=False,
+	help='remove all elements from unknown namespaces')
+parser.add_option('-N', '--prefix', action='store_true',
+	dest='prefix', default=False,
+	help='change namespace prefixes to customary values')
+parser.add_option('-o', '--output', type='str', dest='output',
+	help='name of output directory')
+parser.add_option('-p', '--poly', action='store_true',
+	dest='poly', default=False,
+	help='convert polygons and polylines to paths')
+parser.add_option('-P', '--presentation', action='store_true',
+	dest='presentation', default=False,
+	help='convert all styling to presentation attributes')
+parser.add_option('-r', '--recursive', action='store_true',
+	dest='recursive', default=False,
+	help='process all files recursively in specified directories')
+parser.add_option('-s', '--style', action='store_true',
+	dest='style', default=False,
+	help='consolidate and clean style attributes')
+parser.add_option('-S', '--smallest', action='store_true',
+	dest='smallest', default=False,
+	help='compress to smallest size (same as -A -b -B -c -C -e -f -i0 -l -m'
+	     ' -n -p -s -x)')
+parser.add_option('-t', '--transform', action='store_true',
+	dest='transform', default=False,
+	help='apply transforms to path coordinates (FIXME: incomplete)')
+parser.add_option('-u', '--units', action='store_true',
+	dest='units', default=False,
+	help='(TODO) convert all units to user units')
+parser.add_option('-v', '--verbose', action='store_true',
+	dest='verbose', default=False,
+	help='(TODO) display lots of messages during processing')
+parser.add_option('-V', '--viewbox', action='store_true',
+	dest='viewbox', default=False,
+	help='(TODO) use viewBox to rescale all coordinates to integers')
+parser.add_option('-x', '--xcss', action='store_true',
+	dest='xcss', default=False,
+	help='(TODO) pull out all style into an external stylesheet')
+options, args = parser.parse_args()
+if options.smallest:
+	options.basic = True
+	options.bezier = True
+	options.comments = True
+	options.elements = True
+	options.foreign = True
+	options.indent = 0
+	options.letter = True
+	options.metadata = True
+	options.namespace = True
+	options.poly = True
+	options.prefix = True
+	options.style = True
+	options.xcss = True
+for f in args:
+	npath = os.path.normpath(f)
+	if os.path.isfile(npath):
+		clean_file(options, npath)
+	elif os.path.isdir(npath) and options.recursive:
+		for path, dnames, fnames in os.walk(npath):
+			for fname in fnames:
+				clean_file(options, os.path.join(path, fname))
+	else:
+		print('Invalid file:', f, file=sys.stderr)

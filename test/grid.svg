@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+	  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width='800' height='800'>
+<defs>
+	<marker id="m_circle" markerWidth='5' markerHeight='5' refX='2'
+		refY='2'>
+		<circle cx='2' cy='2' r='2'/>
+	</marker>
+</defs>
+
+<g transform='translate(2,2) scale(2)'>
+	<rect style='fill:#dfe;stroke:white;stroke-width:1'
+	      width='98' height='98'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='M10 50 L50 5 M50 95 L90 50'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='M10 50 C50 5 50 95 90 50'/>
+</g>
+
+<g transform='translate(202,2) scale(2)'>
+	<polygon style='fill:#dfe;stroke:white;stroke-width:1'
+		 points='0,0 98,0 98,98 0,98'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='m10 50l40-45m0 90l40-45'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='m10 50 c40-45 40 45 80 0'/>
+</g>
+
+<g transform='translate(402,2) scale(2) rotate(90) translate(0,-98)'>
+	<path style='fill:#dfe;stroke:white;stroke-width:1'
+	      d='M0 0 L98 0 98 98 0 98z'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='M10 50 L50 5 M50 95 L90 50'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='M10 50 C50 5 50 95 90 50'/>
+</g>
+
+<g transform='matrix(0,2,-2,0,798,2)'>
+	<path style='fill:#dfe;stroke:white;stroke-width:1'
+	      d='m0 0 l98 0 l0 98 l-98 0z'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='m10 50 l40-45 m0 90 l40-45'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='m10 50 c40-45 40 45 80 0'/>
+</g>
+
+<g transform='translate(2,202) scale(2)'>
+	<rect style='fill:#dfe;stroke:white;stroke-width:1'
+	      width='98' height='98'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='M50 10 L90 10 M90 50 L50 50 M50 50 L10 50
+			 M10 90 L50 90'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='M50 10 C90 10 90 50 50 50 C10 50 10 90 50 90'/>
+</g>
+
+<g transform='translate(202,202) scale(2)'>
+	<polygon style='fill:#dfe;stroke:white;stroke-width:1'
+		 points='0,0 98,0 98,98 0,98'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='M50 10 H90 M90 50 H50 M10 90 H50'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='M50 10 C90 10 90 50 50 50 S10 90 50 90'/>
+</g>
+
+<g transform='translate(402,202) scale(2) rotate(90) translate(0,-98)'>
+	<rect style='fill:#dfe;stroke:white;stroke-width:1'
+	      width='98' height='98'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='m50 10 l40 0 m0 40 l-40 0 m0 0 l-40 0 m0 40 l40 0'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='m50 10 c40 0 40 40 0 40 c-40 0-40 40 0 40'/>
+</g>
+
+<g transform='matrix(0,2,-2,0,798,202)'>
+	<polygon style='fill:#dfe;stroke:white;stroke-width:1'
+		 points='0,0 98,0 98,98 0,98'/>
+	<g style='stroke:black;opacity:50%;marker-start:url(#m_circle);
+		  marker-end:url(#m_circle)'>
+		<path d='m50 10 l40 0 m0 40 l-40 0 m-40 40 l40 0'/>
+	</g>
+	<path style='fill:none;stroke:blue;stroke-width:1.5'
+	      d='m50 10 c40 0 40 40 0 40 s-40 40 0 40'/>
+</g>
+
+</svg>
