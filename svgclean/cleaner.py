@@ -2,7 +2,7 @@
 #   svgclean/cleaner.py
 #
 #   This is a module to clean SVG documents.
-#   Copyright (C) 2006-2013  Douglas P. Lau
+#   Copyright (C) 2006-2025  Douglas P. Lau
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -290,7 +290,7 @@ class SvgCleaner(object):
 
 	def clean_file(self):
 		self.warn('Processing file: %s' % self.options.in_file)
-		f = open(self.options.in_file)
+		f = open(self.options.in_file, 'br')
 		try:
 			self._parse_file(f)
 		finally:

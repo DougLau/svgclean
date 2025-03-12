@@ -2,7 +2,7 @@
 #   svgclean/format.py
 #
 #   This is a module to format SVG documents.
-#   Copyright (C) 2006-2013  Douglas P. Lau
+#   Copyright (C) 2006-2025  Douglas P. Lau
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -76,7 +76,7 @@ class Formatter(object):
 
 	def _indent_to(self, column):
 		if self.tabs:
-			return '\t' * (column / 8) + ' ' * (column % 8)
+			return '\t' * (column // 8) + ' ' * (column % 8)
 		else:
 			return ' ' * column
 

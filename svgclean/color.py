@@ -2,7 +2,7 @@
 #   svgclean/color.py
 #
 #   This is a module to parse SVG color styles.
-#   Copyright (C) 2006-2013  Douglas P. Lau
+#   Copyright (C) 2006-2025  Douglas P. Lau
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -179,10 +179,10 @@ _KEYWORDS = {
 _TRIPLET = re.compile('^#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])$')
 _SEXTUPLET = re.compile('^#([0-9a-fA-F]{6})$')
 _FUNCTION = re.compile(
-	'^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$')
+	r'^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$')
 _PERCENT = re.compile(
-	'^rgb\(\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$')
-_URL = re.compile('^url\(#.*\)$')
+	r'^rgb\(\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$')
+_URL = re.compile(r'^url\(#.*\)$')
 
 def validate(value):
 	'Validate a color style value'

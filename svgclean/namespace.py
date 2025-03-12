@@ -2,7 +2,7 @@
 #   svgclean/namespace.py
 #
 #   This is a module to represent XML namespace definitions.
-#   Copyright (C) 2006-2013  Douglas P. Lau
+#   Copyright (C) 2006-2025  Douglas P. Lau
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ SVG = Namespace('http://www.w3.org/2000/svg', 'svg',
 	'stop', 'style', 'svg', 'switch', 'symbol', 'text', 'textPath',
 	'title', 'tref', 'tspan', 'use', 'view', 'vkern'
 ), (	# Attributes
-	'id', 'type', 'class', 'style', 'offset',
+	'id', 'href', 'type', 'class', 'style', 'offset',
 	'values',
 	'x', 'y', 'width', 'height', 'viewBox',
 	'x1', 'y1', 'x2', 'y2',
