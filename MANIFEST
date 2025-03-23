@@ -3,7 +3,6 @@ ChangeLog
 COPYING
 TODO
 scripts/svgclean
-scripts/svg2pixy
 svgclean/__init__.py
 svgclean/cleaner.py
 svgclean/color.py
@@ -11,7 +10,6 @@ svgclean/format.py
 svgclean/namespace.py
 svgclean/opacity.py
 svgclean/path.py
-svgclean/pixy.py
 svgclean/points.py
 svgclean/stroke.py
 svgclean/style.py
