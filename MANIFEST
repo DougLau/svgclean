@@ -3,7 +3,6 @@ ChangeLog
 COPYING
 TODO
 scripts/svgclean
-scripts/mksketch
 scripts/svg2pixy
 svgclean/__init__.py
 svgclean/cleaner.py
@@ -14,7 +13,6 @@ svgclean/opacity.py
 svgclean/path.py
 svgclean/pixy.py
 svgclean/points.py
-svgclean/sketcher.py
 svgclean/stroke.py
 svgclean/style.py
 svgclean/transform.py

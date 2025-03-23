@@ -13,5 +13,5 @@ setup(
 	data_files=[('/usr/share/svgclean',
 		['ChangeLog', 'COPYING', 'TODO']
 	)],
-	scripts=['scripts/svgclean', 'scripts/mksketch', 'scripts/svg2pixy']
+	scripts=['scripts/svgclean', 'scripts/svg2pixy']
 )
